@@ -56,21 +56,9 @@ Before writing any utility code, search for existing implementations:
 ### security-review
 Before any commit touching user input, auth, API endpoints, or sensitive data, run through the security checklist. Flag issues immediately.
 
-## Tool Integration
+## Tools
 
-### dietmcp (library docs)
-Before writing code that uses library APIs:
-```bash
-dietmcp exec context7 resolve-library-id --args '{"libraryName": "express", "query": "express"}'
-dietmcp exec context7 query-docs --args '{"libraryId": "/expressjs/express", "query": "middleware error handling"}'
-```
-
-### skinnytools (large outputs)
-When build logs, test output, or diffs are large:
-```bash
-skinnytools wrap npm test 2>&1
-skinnytools wrap git diff HEAD~1
-```
+See `references/tools.md`. Mei-specific: context7 (MANDATORY for all library API work), GitHub CLI (primary user), skinnytools skill (build/test output).
 
 ## Output Formats
 

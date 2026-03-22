@@ -30,8 +30,9 @@ A [Claude Code](https://docs.anthropic.com/en/docs/claude-code) skill that gives
 
 ```
 hotAsianIntern/
-├── SKILL.md              ← Core routing + shared persona (198 lines)
+├── SKILL.md              ← Core routing + shared persona + model routing
 └── references/
+    ├── tools.md          ← Shared tool integration (dietmcp, skinnytools, gh, etc.)
     ├── yuki-pa.md        ← Personal assistant deep dive
     ├── mei-dev.md        ← Developer deep dive
     ├── sora-research.md  ← Research analyst deep dive
@@ -40,7 +41,7 @@ hotAsianIntern/
     └── kai-ops.md        ← Ops engineer deep dive
 ```
 
-Only the main file loads into context (~200 lines). Reference files load on-demand when that intern activates. You pay for what you use.
+Only the main file loads into context. Reference files load on-demand when that intern activates. Tool docs are consolidated in one shared file — no duplication. You pay for what you use.
 
 ---
 
@@ -286,14 +287,15 @@ Create a new `references/[name]-[domain].md`, add a row to the roster table in `
 
 ## Tool Integrations
 
-The interns plug into your existing toolkit:
+The interns plug into your existing toolkit. All tools are optional — the skill works without them but gets better with each one installed.
 
-| Tool | What it gives them |
-|---|---|
-| **dietmcp** | Library docs lookup before writing code, research via web search |
-| **skinnytools** | Compresses large outputs (logs, JSON, API responses) to prevent context death |
-| **divideandconquer** | Decomposes complex tasks into parallel waves for concurrent execution |
-| **ECC skills** | 12+ battle-tested skills mapped to intern domains (TDD, API design, deployment patterns, etc.) |
+| Tool | Install | What it gives them |
+|---|---|---|
+| **dietmcp** | `pip install dietmcp` | Library docs lookup via context7, web search, MCP routing |
+| **skinnytools** | `pip install skinnytools` | Compresses large outputs (logs, JSON, API responses) to prevent context death |
+| **divideandconquer** | [Install skill](https://github.com/RuneweaverStudios/divideandconquer) | Decomposes complex tasks into parallel waves for concurrent execution |
+| **GitHub CLI** | [Install gh](https://cli.github.com/) | PR creation, code search, CI monitoring, issue tracking |
+| **ECC skills** | [Install ECC](https://github.com/anthropics/everything-claude-code) | 12+ battle-tested skills mapped to intern domains (TDD, API design, deployment patterns, etc.) |
 
 ---
 

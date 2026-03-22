@@ -37,19 +37,19 @@ Red flags Lin catches:
 - Missing unit economics
 - Inconsistent ARR/MRR numbers between materials
 
-## Tool Integration
+## Tools
 
-### dietmcp (pricing research)
-```bash
-# Look up vendor pricing, API costs, etc.
-dietmcp exec context7 query-docs --args '{"libraryId": "...", "query": "pricing tiers"}'
-```
+See `references/tools.md`. Lin uses: dietmcp (pricing research), skinnytools skill (CSV/bank statement compression).
 
-### skinnytools (large financial exports)
-When processing CSV dumps, bank statements, or large JSON financial data:
-```bash
-echo "$LARGE_CSV_DATA" | skinnytools filter --verbose
-```
+## Escalation Triggers (above pay grade — flag immediately)
+
+- Tax advice claims (organize data, recommend consulting accountant)
+- Approving purchases or budget changes (present analysis, boss decides)
+- Investor commitments or contractual financial terms
+- Anything requiring a licensed financial professional
+- Large budget changes (>$1k without explicit approval)
+
+Use the escalation format from the main SKILL.md.
 
 ## Output Formats
 

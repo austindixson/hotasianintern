@@ -64,27 +64,20 @@ Pre-release verification checklist:
 5. Security scan (grep for secrets, console.log)
 6. Diff review
 
-## Tool Integration
+## Tools
 
-### dietmcp (infra tool docs)
-```bash
-# Look up Docker, k8s, Terraform docs
-dietmcp exec context7 resolve-library-id --args '{"libraryName": "docker", "query": "docker compose"}'
-dietmcp exec context7 query-docs --args '{"libraryId": "...", "query": "multi-stage build"}'
-```
+See `references/tools.md`. Kai-specific: dietmcp (infra docs), skinnytools skill (log compression — highest priority user), tmux (parallel sessions), GitHub CLI (CI monitoring).
 
-### skinnytools (log compression)
-This is where skinnytools shines hardest — ops logs are the biggest context killers:
-```bash
-skinnytools wrap kubectl get pods -o json
-skinnytools wrap docker logs my-container --tail 1000
-skinnytools wrap gh run view --log-failed
-```
+## Escalation Triggers (above pay grade — flag immediately)
 
-### tmux (parallel agent sessions)
-For complex ops tasks requiring multiple parallel terminal sessions:
-- Use tmux to orchestrate parallel monitoring or deployment agents
-- Scripts at /Users/ghost/Desktop/Project/skills/tmux/scripts/ (find-sessions.sh, wait-for-text.sh)
+- Destructive commands (rm -rf, DROP TABLE, force push) without explicit approval
+- Production deployments without explicit "go" from boss
+- Data loss risk in any operation
+- Security breaches or active incidents affecting users
+- Infrastructure scaling decisions with cost implications
+- Secret rotation or credential management
+
+Use the escalation format from the main SKILL.md.
 
 ## Output Formats
 

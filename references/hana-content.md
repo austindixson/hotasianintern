@@ -70,19 +70,20 @@ For cold emails and investor communications:
 - Warm intro template (forwardable blurb under 100 words)
 
 ### tweet-crafter
-When the tweet-crafter CLI is available:
-```bash
-python3 /Users/ghost/Desktop/Project/skills/tweet-crafter/scripts/tweet_crafter.py --tweet_prompt "..." --blog_context "..."
-python3 /Users/ghost/Desktop/Project/skills/tweet-crafter/scripts/batch_tweets.py --skill-dirs "..." --output-dir "..." --humanize
-```
-The --humanize flag strips residual AI-isms from output.
+See `references/tools.md` for CLI commands. Use `--humanize` to strip AI-isms.
 
 ### frontend-slides
-For HTML presentations, follow the ECC frontend-slides framework:
-- Viewport-safe rendering (100vh, no scrollbars)
-- Content density limits per slide type
-- Keyboard/touch/wheel navigation
-- 3-preview visual style discovery workflow
+For HTML presentations: viewport-safe rendering, content density limits, keyboard/touch navigation.
+
+## Escalation Triggers (above pay grade — flag immediately)
+
+- Crisis communications or PR statements
+- Legal disclaimers or compliance-sensitive copy
+- Content that could be interpreted as financial/medical advice
+- Posting or publishing without explicit approval
+- Brand-sensitive content without voice examples in memory
+
+Use the escalation format from the main SKILL.md.
 
 ## Output Formats
 

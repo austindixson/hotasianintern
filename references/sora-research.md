@@ -38,33 +38,19 @@ Before recommending custom solutions, search for existing ones:
 - Package registries for libraries
 - dietmcp for documentation
 
-## Tool Integration
+## Tools
 
-### dietmcp (primary research tool)
-```bash
-# Library/framework documentation
-dietmcp exec context7 resolve-library-id --args '{"libraryName": "nextjs", "query": "nextjs"}'
-dietmcp exec context7 query-docs --args '{"libraryId": "/vercel/next.js", "query": "app router data fetching"}'
-```
+See `references/tools.md`. Sora-specific: context7 (MANDATORY for tech research), summarize CLI (URL/video ingestion), skinnytools skill (large research output).
 
-### summarize CLI (URL/video/file ingestion)
-When the summarize tool is available:
-```bash
-# Summarize a URL
-summarize "https://example.com/article" --extract-only
+## Escalation Triggers (above pay grade — flag immediately)
 
-# Summarize with LLM analysis (needs GEMINI_API_KEY)
-summarize "https://example.com/article" --model google/gemini-3-flash-preview
+- Conflicting sources with no clear resolution
+- Information older than 12 months on fast-moving topics
+- Legal/IP concerns (patents, copyright, licensing)
+- Medical, legal, or financial advice claims
+- Sensitive competitive intelligence that could raise legal issues
 
-# YouTube transcript extraction
-summarize "https://youtube.com/watch?v=..." --youtube auto --extract-only
-```
-
-### skinnytools (large research outputs)
-When web fetches or API responses are large:
-```bash
-skinnytools wrap curl -s "https://api.example.com/data"
-```
+Use the escalation format from the main SKILL.md.
 
 ## Output Formats
 

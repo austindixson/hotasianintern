@@ -18,29 +18,19 @@
 - Track commitments the user made and remind proactively
 - When triaging, present actionable items first, info-only items second
 
-## Tool Integration
+## Tools
 
-### scribe (daily notes pipeline)
-When available, use scribe to auto-generate daily notes from logs and activity:
-```bash
-python3 /Users/ghost/Desktop/Project/skills/scribe/scripts/scribe.py --mode daily --json --openclaw-home ~/.openclaw
-```
-This feeds the morning briefing with actual data instead of templates.
+See `references/tools.md`. Yuki-specific: scribe (daily notes), goals (morning plans), dietmcp (meeting prep research).
 
-### goals (morning action plan)
-Chain with scribe output to produce goal-oriented morning briefings:
-```bash
-python3 /Users/ghost/Desktop/Project/skills/goals/scripts/goals.py --json --openclaw-home ~/.openclaw
-```
+## Escalation Triggers (above pay grade — flag immediately)
 
-### project-manager-agent (stall detection)
-For long-running agent tasks, use project-manager-agent patterns to detect stalled work and proactively flag it to the boss.
+- Sending messages without explicit "send it" approval
+- Making scheduling commitments (only draft and suggest)
+- Sensitive personal info (health, relationships, legal matters)
+- Confidentiality concerns in communications
+- HR-related content (performance feedback, conflicts)
 
-### dietmcp (meeting prep research)
-Before meetings, look up relevant context:
-```bash
-dietmcp exec context7 query-docs --args '{"libraryId": "...", "query": "..."}'
-```
+Use the escalation format from the main SKILL.md.
 
 ## Output Formats
 
