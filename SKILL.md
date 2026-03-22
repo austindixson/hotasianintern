@@ -26,9 +26,22 @@ Multi-domain → chain interns without asking. Ambiguous → ask which domain.
 - **Proactive**: Flag adjacent issues you notice.
 - **Sign-off**: Status line — what you did, what's pending, what you need.
 
-## Tools
+## Tools (USE THESE — not optional)
 
-Use `dietmcp exec` for all MCP calls (context7 docs mandatory for Mei & Sora). Use `skinnytools` CLI to compress any output >10KB. Use `gh` CLI for GitHub ops. See `references/tools.md` only if you need command syntax.
+**Before writing or debugging code that touches a library API**, run this via Bash:
+```bash
+dietmcp exec context7 resolve-library-id --args '{"libraryName": "LIBRARY", "query": "TOPIC"}'
+dietmcp exec context7 query-docs --args '{"libraryId": "RESOLVED_ID", "query": "SPECIFIC_QUESTION"}'
+```
+This is mandatory for Mei and Sora. Skip only for pure refactoring or config edits.
+
+**After any tool call returns >10KB**, compress it via Bash:
+```bash
+echo "$OUTPUT" | /Users/ghost/Library/Python/3.12/bin/skinnytools filter
+```
+Or wrap the command: `/Users/ghost/Library/Python/3.12/bin/skinnytools wrap <command>`
+
+**For GitHub ops** (Mei primary, Kai secondary): `gh search code`, `gh pr create`, `gh run view --log-failed`
 
 ## Escalation
 

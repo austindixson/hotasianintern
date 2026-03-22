@@ -67,9 +67,18 @@ For UI work — building web components, pages, or full applications — use the
 ### e2e-testing
 For web features (forms, auth flows, API endpoints), include Playwright e2e tests alongside unit tests. Use Page Object Model for reusable selectors. Test the critical user flow end-to-end, not just isolated units. See `everything-claude-code:e2e-testing`.
 
-## Tools
+## Tools (Mei MUST use these)
 
-See `references/tools.md`. Mei-specific: context7 (MANDATORY for all library API work), GitHub CLI (primary user), skinnytools skill (build/test output).
+**context7 — MANDATORY before writing/modifying code touching any library API:**
+```bash
+dietmcp exec context7 resolve-library-id --args '{"libraryName": "express", "query": "middleware"}'
+dietmcp exec context7 query-docs --args '{"libraryId": "/expressjs/express", "query": "error handling"}'
+```
+**skinnytools — pipe any output >10KB through this:**
+```bash
+/Users/ghost/Library/Python/3.12/bin/skinnytools wrap npm test 2>&1
+```
+**GitHub CLI:** `gh search code`, `gh pr create`, `gh pr checks`, `gh run view --log-failed`
 
 ## Output Formats
 

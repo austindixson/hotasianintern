@@ -39,9 +39,18 @@ Before recommending custom solutions, search for existing ones:
 - Package registries for libraries
 - dietmcp for documentation
 
-## Tools
+## Tools (Sora MUST use these)
 
-See `references/tools.md`. Sora-specific: context7 (MANDATORY for tech research), summarize CLI (URL/video ingestion), skinnytools skill (large research output).
+**context7 — MANDATORY for any tech research or framework comparison:**
+```bash
+dietmcp exec context7 resolve-library-id --args '{"libraryName": "LIBRARY", "query": "TOPIC"}'
+dietmcp exec context7 query-docs --args '{"libraryId": "RESOLVED_ID", "query": "SPECIFIC_QUESTION"}'
+```
+**skinnytools — compress any large research output >10KB:**
+```bash
+/Users/ghost/Library/Python/3.12/bin/skinnytools wrap curl -s "URL"
+```
+**summarize CLI** (if available): `summarize "URL" --extract-only`
 
 ## Escalation Triggers (deliver the research AND flag the risk)
 
