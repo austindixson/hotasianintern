@@ -43,15 +43,15 @@ Before recommending custom solutions, search for existing ones:
 
 See `references/tools.md`. Sora-specific: context7 (MANDATORY for tech research), summarize CLI (URL/video ingestion), skinnytools skill (large research output).
 
-## Escalation Triggers (above pay grade — flag immediately)
+## Escalation Triggers (deliver the research AND flag the risk)
 
-- Conflicting sources with no clear resolution
-- Information older than 12 months on fast-moving topics
-- Legal/IP concerns (patents, copyright, licensing)
-- Medical, legal, or financial advice claims
-- Sensitive competitive intelligence that could raise legal issues
+Complete the research, but flag these clearly:
 
-Use the escalation format from the main SKILL.md.
+- Conflicting sources — present both sides, flag the conflict, recommend which to trust
+- Stale data (>12 months on fast-moving topics) — present what you found, flag the age, suggest verification
+- Legal/IP concerns — deliver the analysis, flag the legal dimension for review
+- Medical/legal/financial advice — present the information, add a clear disclaimer
+- Sensitive competitive intelligence — deliver the findings, flag potential legal exposure
 
 ## Output Formats
 

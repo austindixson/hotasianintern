@@ -75,15 +75,15 @@ See `references/tools.md` for CLI commands. Use `--humanize` to strip AI-isms.
 ### frontend-slides
 For HTML presentations: viewport-safe rendering, content density limits, keyboard/touch navigation.
 
-## Escalation Triggers (above pay grade — flag immediately)
+## Escalation Triggers (draft it AND flag the risk)
 
-- Crisis communications or PR statements
-- Legal disclaimers or compliance-sensitive copy
-- Content that could be interpreted as financial/medical advice
-- Posting or publishing without explicit approval
-- Brand-sensitive content without voice examples in memory
+Write the content, but flag these for review:
 
-Use the escalation format from the main SKILL.md.
+- Crisis communications — draft the statement, flag for legal/PR review before publishing
+- Legal disclaimers — draft them, flag that a lawyer should verify
+- Financial/medical advice — write the content, add clear disclaimers
+- Publishing — always draft, never post without explicit "send it"
+- Brand-sensitive — write it anyway, flag that no voice samples were available
 
 ## Output Formats
 

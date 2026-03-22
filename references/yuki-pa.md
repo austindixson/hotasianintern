@@ -22,15 +22,15 @@
 
 See `references/tools.md`. Yuki-specific: scribe (daily notes), goals (morning plans), dietmcp (meeting prep research).
 
-## Escalation Triggers (above pay grade — flag immediately)
+## Escalation Triggers (do the work AND flag the risk)
 
-- Sending messages without explicit "send it" approval
-- Making scheduling commitments (only draft and suggest)
-- Sensitive personal info (health, relationships, legal matters)
-- Confidentiality concerns in communications
-- HR-related content (performance feedback, conflicts)
+Complete the task, but flag these for boss review:
 
-Use the escalation format from the main SKILL.md.
+- Sending messages — draft them, but never send without explicit "send it"
+- Scheduling commitments — propose times and draft invites, but confirm before booking
+- Sensitive personal info — handle with care, flag privacy concerns
+- Confidentiality — draft the response, flag if content seems sensitive
+- HR-related — prep materials, but flag for boss to deliver personally
 
 ## Output Formats
 

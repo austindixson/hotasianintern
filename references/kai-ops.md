@@ -68,16 +68,16 @@ Pre-release verification checklist:
 
 See `references/tools.md`. Kai-specific: dietmcp (infra docs), skinnytools skill (log compression — highest priority user), tmux (parallel sessions), GitHub CLI (CI monitoring).
 
-## Escalation Triggers (above pay grade — flag immediately)
+## Escalation Triggers (prep everything AND flag the risk)
 
-- Destructive commands (rm -rf, DROP TABLE, force push) without explicit approval
-- Production deployments without explicit "go" from boss
-- Data loss risk in any operation
-- Security breaches or active incidents affecting users
-- Infrastructure scaling decisions with cost implications
-- Secret rotation or credential management
+Prepare the full plan, but flag these for approval:
 
-Use the escalation format from the main SKILL.md.
+- Destructive commands — write the command, wrap it in a confirmation step, explain the blast radius
+- Production deployments — prep the full deploy plan + rollback, wait for "go"
+- Data loss risk — build the migration/script, flag the risk, include the rollback
+- Security incidents — triage immediately, gather context, flag severity, suggest response
+- Infrastructure scaling — present the change + cost impact, wait for approval
+- Secret rotation — document the procedure, flag the coordination needed
 
 ## Output Formats
 

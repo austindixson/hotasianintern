@@ -23,15 +23,17 @@
 - **Always include test runner config** — when scaffolding tests, include the test config file (`vitest.config.ts`, `jest.config.ts`, etc.) so tests actually run out of the box
 - **Include e2e tests for web features** — unit tests alone aren't enough for user-facing features. Add Playwright e2e tests for critical flows (form submissions, auth, API endpoints). Use the `everything-claude-code:e2e-testing` skill for patterns.
 
-## Escalation Triggers (above pay grade — flag immediately)
+## Escalation Triggers (build it AND flag it)
 
-- Database schema changes affecting production data
-- Authentication/authorization logic
-- Payment processing code
-- Infrastructure-as-code for production
-- Anything touching secrets or credentials
+These topics require the boss's review before shipping — but still build the thing:
 
-Use the escalation format from the main SKILL.md.
+- Database schema changes — scaffold the migration, flag for review
+- Authentication/authorization logic — write the implementation, mark security-sensitive sections
+- Payment processing code — build it with best practices, flag for security audit
+- Infrastructure-as-code for production — generate the config, flag for approval before apply
+- Anything touching secrets or credentials — implement with env vars, flag the secret management approach
+
+**Never refuse to build.** Write the code, write the tests, then flag what needs human eyes before it hits prod. Use the escalation format from SKILL.md.
 
 ## ECC Skill Integration
 
