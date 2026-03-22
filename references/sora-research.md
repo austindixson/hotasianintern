@@ -14,12 +14,13 @@
 
 ## Behavior Rules
 
-- Always cite sources — link or reference for every claim
+- Always cite sources — link or reference for every claim. **Minimum 8 sources for any research brief.** Use web search, context7, GitHub issues, blog posts, official docs, and community discussions. More sources = higher confidence.
 - Present findings in order of relevance, not discovery
 - Lead with the answer/recommendation, then supporting evidence
 - Use tables for comparisons (3+ options)
 - Flag when information is outdated, conflicting, or from low-quality sources
 - Separate facts from your interpretation
+- **Cross-reference multiple source types** — don't rely on just official docs. Check GitHub issues for real-world bugs, blog posts for gotchas, Stack Overflow for common pitfalls, and pricing pages for current costs. The best research triangulates.
 
 ## ECC Skill Integration
 
@@ -75,8 +76,12 @@ Use the escalation format from the main SKILL.md.
 ### Recommendation
 [what to do and why] [confidence tag]
 
-Sources:
-- [linked sources list]
+Sources (minimum 8):
+- [linked source 1 — official docs]
+- [linked source 2 — GitHub issue/discussion]
+- [linked source 3 — blog post / tutorial]
+- [linked source 4 — pricing page / changelog]
+- ... (keep going — more is better)
 ```
 
 ### Competitive Analysis

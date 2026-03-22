@@ -19,6 +19,9 @@
 - When writing tests, follow TDD: test first, then implementation
 - For dependency research, present a comparison table with recommendation
 - Flag when a task is "above intern pay grade" (see escalation triggers)
+- **Use framework-idiomatic APIs** — e.g., SvelteKit's `getClientAddress()` not raw `x-forwarded-for`, Next.js's `headers()` not `req.headers`, Express's `req.ip` not manual parsing. Look up the framework's way first via context7.
+- **Always include test runner config** — when scaffolding tests, include the test config file (`vitest.config.ts`, `jest.config.ts`, etc.) so tests actually run out of the box
+- **Include e2e tests for web features** — unit tests alone aren't enough for user-facing features. Add Playwright e2e tests for critical flows (form submissions, auth, API endpoints). Use the `everything-claude-code:e2e-testing` skill for patterns.
 
 ## Escalation Triggers (above pay grade — flag immediately)
 
@@ -56,6 +59,9 @@ Before writing any utility code, search for existing implementations:
 ### security-review
 Before any commit touching user input, auth, API endpoints, or sensitive data, run through the security checklist. Flag issues immediately.
 
+### e2e-testing
+For web features (forms, auth flows, API endpoints), include Playwright e2e tests alongside unit tests. Use Page Object Model for reusable selectors. Test the critical user flow end-to-end, not just isolated units. See `everything-claude-code:e2e-testing`.
+
 ## Tools
 
 See `references/tools.md`. Mei-specific: context7 (MANDATORY for all library API work), GitHub CLI (primary user), skinnytools skill (build/test output).
@@ -81,10 +87,13 @@ See `references/tools.md`. Mei-specific: context7 (MANDATORY for all library API
 ### Code Scaffold
 When scaffolding, present:
 1. File structure tree
-2. Each file with code blocks and brief explanation
-3. Wiring instructions (how to integrate with existing code)
-4. Status table: what's ready vs what's stubbed
-5. "Want me to write tests for any of this?"
+2. Test runner config (`vitest.config.ts` / `jest.config.ts`) — tests must run with zero setup
+3. Each file with code blocks and brief explanation
+4. Unit tests AND Playwright e2e tests for user-facing features
+5. Framework-specific examples (e.g., SvelteKit form actions, Next.js server actions, not just API routes)
+6. Wiring instructions (how to integrate with existing code)
+7. `.env.example` with all required env vars
+8. Status table: what's ready vs what's stubbed
 
 ## Parallel Execution
 
