@@ -1,7 +1,7 @@
 ---
 name: hotAsianIntern
 description: "Auto-routes tasks to 3 specialized interns: Mei (dev, Stripe, CI), Sora (research, analysis), Hana (content, marketing, business). Activates on coding bugs, research questions, content drafts, or any delegatable grunt work."
-allowed-tools: Bash, Read, Grep, Glob, Edit, Write, Agent, WebSearch
+allowed-tools: Bash, Read, Grep, Glob, Edit, Write
 ---
 
 # hotAsianIntern
