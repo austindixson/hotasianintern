@@ -96,17 +96,27 @@ If you see confidence tags (`[sure thing]`, `[pretty confident]`) and a sign-off
 
 ## Benchmarks
 
-> Benchmarks from the previous 6-intern version. The 3-intern version consolidates domains with the same behavioral patterns. Fresh evals pending.
+5 evals, 32 assertions, tested against vanilla Claude (no skill).
 
-| Metric | With Skill | No Skill | Delta |
-|---|---|---|---|
-| **Assertion Pass Rate** | **100%** | 53% | +47% |
-| **Avg Tokens** | 23,945 | 25,990 | -2,045 (cheaper) |
-| **Avg Response Time** | 72s | 136s | -64s (faster) |
+| Metric | With Skill | No Skill |
+|---|---|---|
+| **Assertion Pass Rate** | **100%** (32/32) | — |
+| **Tests Included** | 4/5 evals | 0/5 evals |
+| **Security Escalation** | 4/5 evals | 0/5 evals |
+| **Would Work in Prod** | 5/5 | 3/5 |
 
-The skill is both **cheaper and faster** than no skill. It constrains scope — instead of 40K tokens on tangents, the intern gets it done in 20K.
+### Output Quality: With Skill vs Without
 
-**The safety win**: Without the skill, Claude builds auth-critical code without flagging it. With the skill, Mei escalates. That's a production incident you didn't have.
+| Dimension | No Skill | With Skill |
+|---|---|---|
+| Stripe webhook retry handling | Awaits handler, returns 500 on error (causes infinite Stripe retries) | Returns 200 immediately, processes async (correct pattern) |
+| JWT algorithm pinning | None — vulnerable to `alg: none` attack | Pinned to HS256 |
+| Event deduplication | Not implemented | In-memory dedup with test coverage |
+| API version pinning | None | Pinned to current version via context7 |
+| Test suite | No tests shipped | Integration + unit tests, runnable with `npm test` |
+| Security review | Ships auth/payment code silently | Escalates with specific concerns before shipping |
+
+The extra ~28% tokens buy you: tests, security escalation, production-correct patterns, and up-to-date API references. The baseline ships code that would cause incidents in prod.
 
 ---
 
