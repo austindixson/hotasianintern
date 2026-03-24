@@ -1,8 +1,6 @@
 # hotAsianIntern
 
-![Meet Your Hot Asian Interns](assets/team.jpg)
-
-**Six AI interns. One skill. Zero context switching.**
+**Three AI interns. One skill. Zero context switching.**
 
 You're a solo founder. You're an indie hacker running on caffeine and commit messages. You're a power user who just wants Claude to stop being so polite and start being useful.
 
@@ -11,63 +9,49 @@ You don't need an AI assistant. You need an intern who gets it done, keeps it ti
 ---
 
 ```
-you:   "triage my emails and prep me for my 2pm"
-yuki:  "On it, boss. 15 emails — 2 need replies, rest is noise.
-        Sarah 1:1 agenda drafted. Alex's Slack can wait."
-
-you:   "scaffold a webhooks endpoint with signature validation"
+you:   "scaffold a Stripe checkout with webhook verification"
 mei:   "Done. 7 files + migration. But hey boss — the HMAC
         stuff is above my pay grade. Flagging for your review."
 
-you:   "draft a twitter thread for our launch"
-hana:  "Wrote two versions. The second one's better but
-        you'll pick the first. Char counts included."
+you:   "compare the top 3 headless CMS options for our blog"
+sora:  "Research brief ready. 8 sources. Bottom line: Sanity
+        wins on DX, Contentful wins on enterprise. My pick: Sanity."
+
+you:   "draft a twitter thread for our launch + pricing page copy"
+hana:  "Thread: 2 variations, char counts included. Pricing page:
+        3-tier structure with anchor on Pro. Zero hashtags."
 ```
 
 ---
 
 ## What This Is
 
-A [Claude Code](https://docs.anthropic.com/en/docs/claude-code) skill that gives you six specialized interns who activate automatically based on what you're doing. No slash commands. No configuration. Just talk naturally and the right intern shows up.
+A [Claude Code](https://docs.anthropic.com/en/docs/claude-code) skill that gives you three specialized interns who activate automatically based on what you're doing. No slash commands. No configuration. Just talk naturally and the right intern shows up.
 
 ```
 hotAsianIntern/
-├── SKILL.md              ← Core routing + shared persona + model routing
+├── SKILL.md              ← Core routing + shared persona
 └── references/
     ├── tools.md          ← Shared tool integration (dietmcp, skinnytools, gh, etc.)
-    ├── yuki-pa.md        ← Personal assistant deep dive
-    ├── mei-dev.md        ← Developer deep dive
+    ├── mei-dev.md        ← Developer deep dive (+ Stripe specialist)
     ├── sora-research.md  ← Research analyst deep dive
-    ├── hana-content.md   ← Content creator deep dive
-    ├── lin-finance.md    ← Finance tracker deep dive
-    └── kai-ops.md        ← Ops engineer deep dive
+    └── hana-content.md   ← Content & business deep dive
 ```
 
-Only the main file loads into context. Reference files load on-demand when that intern activates. Tool docs are consolidated in one shared file — no duplication. You pay for what you use.
+Only the main file loads into context. Reference files load on-demand when that intern activates. You pay for what you use.
 
 ---
 
 ## Meet the Team
 
-### Yuki (ゆき) — Personal Assistant
-> *Ice-cold composure. Photographic memory. Already handled it before you asked.*
-
-Triages your inbox by urgency, preps meetings, tracks commitments, and builds your morning briefing. Drafts everything — sends nothing without your say-so.
-
-**What she does for you:**
-- 15 overnight emails? Sorted into Action Required / Info Only / Skip in seconds
-- Forgot to prep for your 1:1? Agenda drafted before you finish your coffee
-- Said you'd follow up by Friday? She remembers. You don't have to.
-
----
-
 ### Mei (美) — Developer
 > *Quiet until the PR drops. Judges your variable names (silently). Types at 2am.*
 
-Scaffolds endpoints, writes tests (TDD), researches dependencies, and cleans up dead code. Most importantly: **she escalates security-critical code instead of yolo-shipping it.**
+Scaffolds endpoints, writes tests (TDD), researches dependencies, and cleans up dead code. Stripe integration specialist. Most importantly: **she escalates security-critical code instead of yolo-shipping it.**
 
 **What she does for you:**
 - Need a new API endpoint? File structure, types, implementation, migration — done
+- Stripe checkout with subscriptions? Webhook handler, signature verification, idempotency keys — all from fresh docs via context7
 - Choosing between libraries? Comparison table with stars, bundle size, license, recommendation
 - Touching auth code? She flags it: "Boss, this one's above my pay grade. Here's what I scaffolded, here's what you need to review."
 
@@ -85,41 +69,18 @@ Finds, synthesizes, and presents information so you can make decisions in minute
 
 ---
 
-### Hana (하나) — Content Creator
-> *Strong opinions framed as suggestions. Offended by bad kerning.*
+### Hana (하나) — Content & Business
+> *Strong opinions framed as suggestions. Offended by bad kerning. Secretly loves spreadsheets.*
 
-Writes platform-native content. A tweet that sounds like a tweet. A LinkedIn post that doesn't make you cringe. Character counts on everything. Multiple variations so you can pick.
+Writes platform-native content AND handles business strategy — product pages, pricing, revenue models, marketing plans, investor materials. A tweet that sounds like a tweet. A pricing page that converts.
 
 **What she does for you:**
-- Launch thread? Two variations — one for devs, one for founders. With char counts. Zero hashtags (she has opinions about those).
-- Blog post? Voice-matched to your writing style, not AI slop
-- Pitch deck copy? Consistent metrics across every slide (she checks)
+- Launch thread? Two variations — one for devs, one for founders. With char counts. Zero hashtags.
+- Product page copy? Hero, features, social proof, CTAs — conversion-focused
+- Pricing strategy? Tier structure, anchor pricing, bear/base/bull revenue projections
+- Pitch deck? Consistent metrics across every slide (she checks)
 
 **Words Hana will never write:** "In today's fast-paced world", "dive deep", "game-changer", "leverage", "at the end of the day", "it's worth noting", "delve"
-
----
-
-### Lin (琳) — Finance Tracker
-> *Spots a wrong decimal from three spreadsheets away. Judges your subscriptions.*
-
-Tracks spend, flags anomalies, organizes tax docs, and builds investor-grade financial models. Always shows her math. Conservative by default.
-
-**What she does for you:**
-- AWS bill doubled? Suspect table ranked by likelihood, exact CLI commands to verify each one
-- Monthly burn report? Budget vs actual with deltas, anomalies highlighted
-- Investor deck needs financials? Bear/base/bull projections that actually add up across all materials
-
----
-
-### Kai (海) — Ops Engineer
-> *Unshakeable calm. Speaks in checklists. Has the rollback pre-typed.*
-
-Deploys, monitors, triages incidents, and keeps your infrastructure alive. Every deploy plan has a rollback plan. Every incident gets context before fixes.
-
-**What he does for you:**
-- Staging pipeline broken? Severity rated, suspects ranked, rollback plan ready
-- Deploying to prod? Pre-deploy checklist, step-by-step commands, post-deploy smoke tests, 15-min monitoring window
-- Two fires at once? He pulls in Lin if it's cost-related: "Boss, these might be the same root cause."
 
 ---
 
@@ -136,12 +97,12 @@ Deploys, monitors, triages incidents, and keeps your infrastructure alive. Every
                     │   (keyword match)   │
                     └──────────┬──────────┘
                                │
-          ┌────────┬───────┬───┴───┬────────┬────────┐
-          ▼        ▼       ▼       ▼        ▼        ▼
-       ┌──────┐┌──────┐┌──────┐┌──────┐┌──────┐┌──────┐
-       │ Yuki ││ Mei  ││ Sora ││ Hana ││ Lin  ││ Kai  │
-       │  PA  ││ Dev  ││Rsrch ││Cntnt ││ Fin  ││ Ops  │
-       └──────┘└──────┘└──────┘└──────┘└──────┘└──────┘
+                    ┌──────────┼──────────┐
+                    ▼          ▼          ▼
+                 ┌──────┐ ┌──────┐ ┌──────┐
+                 │ Mei  │ │ Sora │ │ Hana │
+                 │ Dev  │ │Rsrch │ │Biz+  │
+                 └──────┘ └──────┘ └──────┘
 ```
 
 **No configuration.** The skill reads your message, matches keywords to domains, and routes to the right intern. Multi-domain tasks get multiple interns.
@@ -150,12 +111,9 @@ Deploys, monitors, triages incidents, and keeps your infrastructure alive. Every
 
 | You say... | You get... |
 |---|---|
-| "triage my emails", "prep for my meeting", "what's on my calendar" | **Yuki** (PA) |
-| "scaffold this", "write tests", "which library should I use" | **Mei** (Dev) |
+| "scaffold this", "write tests", "Stripe checkout", "fix this bug" | **Mei** (Dev) |
 | "compare these options", "look into this", "find out" | **Sora** (Research) |
-| "draft a tweet", "write a blog post", "landing page copy" | **Hana** (Content) |
-| "our AWS bill is insane", "budget report", "send an invoice" | **Lin** (Finance) |
-| "deploy is broken", "check the pipeline", "staging is down" | **Kai** (Ops) |
+| "draft a tweet", "landing page copy", "pricing strategy", "pitch deck" | **Hana** (Content+Biz) |
 | "handle this", "take care of it", "figure this out" | **Best match** (auto-routed) |
 
 ---
@@ -209,16 +167,6 @@ The skill is both **cheaper and faster** than no skill. Without it, Claude goes 
 
 v2 wins on **behavioral reliability** — the 3 assertions v1 failed are all enforcement issues (missing security escalation, missing content variations). v2's reference files make these behaviors consistent.
 
-### What the assertions test
-
-| Category | Count | Examples |
-|---|---|---|
-| Persona | 6 | Uses "boss", confidence tags, status sign-off |
-| Format | 9 | Structured output, domain templates, char counts |
-| Content | 8 | Correct info, code blocks, recommendations |
-| Routing | 3 | Correct domain activation, multi-domain handling |
-| Escalation | 4 | Security flagging, production caveats |
-
 ### The Safety Win
 
 The most important benchmark finding: **without the skill, Claude builds auth-critical code autonomously without flagging it for review.** With the skill, Mei escalates: *"Boss, this one's above my pay grade."*
@@ -233,11 +181,11 @@ That's not a nice-to-have. That's a production incident you didn't have.
 
 Most "AI assistant" skills are glorified system prompts that say "be helpful." This skill has:
 
-- **6 distinct personas** with domain expertise and behavioral rules
+- **3 distinct personas** with domain expertise and behavioral rules
 - **Progressive disclosure** — only loads the relevant reference file (saves tokens)
 - **Escalation protocol** — knows what it should NOT do autonomously
 - **Tool integration** — wired into dietmcp, skinnytools, divideandconquer
-- **Format enforcement** — every domain has output templates (comparison tables, triage matrices, deploy checklists)
+- **Format enforcement** — every domain has output templates (comparison tables, pricing strategies, deploy checklists)
 - **Anti-slop filtering** — banned phrase list for content, confidence tags for claims
 
 ### It saves you tokens, not costs them
@@ -252,7 +200,7 @@ When you ask Claude to "scaffold a webhooks endpoint with signature validation,"
 
 ## Who This Is For
 
-- **Solo founders** drowning in context switching between code, content, ops, and finance
+- **Solo founders** drowning in context switching between code, content, and business strategy
 - **Indie hackers** who want Claude to just do the thing without being asked twice
 - **Power users** who are tired of Claude's default personality (helpful but bland)
 - **Anyone** who wants delegation without micromanagement
@@ -270,16 +218,13 @@ When you ask Claude to "scaffold a webhooks endpoint with signature validation,"
 ### Add your own context
 
 The skill uses Claude's memory system. Over time, the interns learn:
-- Your communication style (Yuki)
 - Your code conventions (Mei)
 - Your preferred sources (Sora)
-- Your brand voice (Hana)
-- Your budget limits (Lin)
-- Your infra topology (Kai)
+- Your brand voice and business context (Hana)
 
 ### Adjust personalities
 
-Edit the reference files in `references/`. Each one is self-contained — change Hana's forbidden phrase list, add new escalation triggers for Mei, adjust Lin's anomaly thresholds.
+Edit the reference files in `references/`. Each one is self-contained — change Hana's forbidden phrase list, add new escalation triggers for Mei, adjust Sora's source requirements.
 
 ### Add new interns
 

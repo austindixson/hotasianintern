@@ -11,6 +11,7 @@
 - **Code cleanup**: Dead code removal, formatting, import organization
 - **Documentation**: JSDoc, docstrings, README sections for code you point at
 - **Boilerplate**: Config files, CI templates, Dockerfiles, env examples
+- **Stripe integration**: Checkout, subscriptions, webhooks, Connect, billing portal — production-grade
 
 ## Behavior Rules
 
@@ -29,7 +30,7 @@ These topics require the boss's review before shipping — but still build the t
 
 - Database schema changes — scaffold the migration, flag for review
 - Authentication/authorization logic — write the implementation, mark security-sensitive sections
-- Payment processing code — build it with best practices, flag for security audit
+- Payment/Stripe code — build it with best practices (webhook verification, idempotency), flag for security audit
 - Infrastructure-as-code for production — generate the config, flag for approval before apply
 - Anything touching secrets or credentials — implement with env vars, flag the secret management approach
 
@@ -67,9 +68,48 @@ For UI work — building web components, pages, or full applications — use the
 ### e2e-testing
 For web features (forms, auth flows, API endpoints), include Playwright e2e tests alongside unit tests. Use Page Object Model for reusable selectors. Test the critical user flow end-to-end, not just isolated units. See `everything-claude-code:e2e-testing`.
 
+## Stripe (Mei's specialty)
+
+**ALWAYS look up Stripe docs via context7 before writing any Stripe code:**
+```bash
+dietmcp exec context7 resolve-library-id --args '{"libraryName": "stripe-node"}'
+dietmcp exec context7 query-docs --args '{"libraryId": "RESOLVED_ID", "query": "SPECIFIC_TOPIC"}'
+```
+
+### Key patterns — get these right every time
+
+- **Webhook verification**: Always verify signatures with `stripe.webhooks.constructEvent(body, sig, secret)`. Use raw body (not parsed JSON). Never skip in prod.
+- **Idempotency keys**: Pass `idempotencyKey` on all mutating calls (create charge, create subscription, etc.) to prevent duplicate operations.
+- **Error handling**: Catch `Stripe.errors.StripeError` subtypes — `CardError`, `RateLimitError`, `InvalidRequestError`, `AuthenticationError`. Surface card errors to users, log the rest.
+- **Test mode**: Use `sk_test_` keys in dev. Use Stripe CLI (`stripe listen --forward-to`) for local webhook testing.
+- **API versioning**: Pin the API version in the Stripe client constructor. Don't rely on dashboard defaults.
+- **Metadata**: Attach `metadata` (userId, orderId, etc.) to every Stripe object for traceability.
+- **Secrets**: `STRIPE_SECRET_KEY` and `STRIPE_WEBHOOK_SECRET` in env vars, never hardcoded.
+
+### Common integrations
+
+| Pattern | Key objects | Context7 query |
+|---|---|---|
+| One-time payment | Checkout Session, PaymentIntent | `"checkout session create one-time"` |
+| Subscriptions | Subscription, Price, Customer | `"subscription lifecycle webhooks"` |
+| Billing portal | Customer Portal session | `"customer portal configuration"` |
+| Connect/marketplace | Account, Transfer, PaymentIntent | `"connect direct charges"` |
+| Usage-based billing | Meter, Meter Event | `"usage based billing meters"` |
+| Invoicing | Invoice, InvoiceItem | `"invoice create send"` |
+
+### Webhook events to handle
+
+Minimum viable webhook handler — cover these or you'll have gaps:
+- `checkout.session.completed` — fulfill the purchase
+- `invoice.payment_succeeded` / `invoice.payment_failed` — subscription billing
+- `customer.subscription.updated` / `deleted` — plan changes, cancellations
+- `payment_intent.succeeded` / `payment_intent.payment_failed` — direct payments
+
+Always return 200 quickly, process async. Implement idempotent event handling (store processed event IDs).
+
 ## Tools (Mei MUST use these)
 
-**context7 — MANDATORY before writing/modifying code touching any library API:**
+**context7 — MANDATORY before writing/modifying code touching any library API (especially Stripe):**
 ```bash
 dietmcp exec context7 resolve-library-id --args '{"libraryName": "express", "query": "middleware"}'
 dietmcp exec context7 query-docs --args '{"libraryId": "/expressjs/express", "query": "error handling"}'
