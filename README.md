@@ -96,14 +96,16 @@ If you see confidence tags (`[sure thing]`, `[pretty confident]`) and a sign-off
 
 ## Benchmarks
 
-5 evals, 32 assertions, tested against vanilla Claude (no skill).
+12 evals, 69 assertions across 6 categories, tested against vanilla Claude (no skill).
 
 | Metric | With Skill | No Skill |
 |---|---|---|
-| **Assertion Pass Rate** | **100%** (32/32) | — |
-| **Tests Included** | 4/5 evals | 0/5 evals |
-| **Security Escalation** | 4/5 evals | 0/5 evals |
-| **Would Work in Prod** | 5/5 | 3/5 |
+| **Single-Intern Routing** | 5/5 correct | — |
+| **Chain Routing** | 2/2 correct handoffs | — |
+| **Edge Cases** | 2/2 (ambiguous + trap) | — |
+| **Turbo Routing** | 1/1 parallel dispatch | — |
+| **Escalation** | 2/2 (auth + destructive) | 0/2 |
+| **Efficiency** | 1/1 skip-list respected | — |
 
 ### Output Quality: With Skill vs Without
 
@@ -123,7 +125,10 @@ The extra ~28% tokens buy you: tests, security escalation, production-correct pa
 ## What Makes This Different
 
 - **3 distinct personas** with domain expertise and behavioral rules
+- **Turbo routing** — complexity scoring + decomposability analysis before dispatch (inspired by [Google's agent scaling research](https://research.google/blog/towards-a-science-of-scaling-agent-systems-when-and-why-agent-systems-work/))
+- **Context budget** — asymmetric precision for context management (inspired by [Google's TurboQuant](https://research.google/blog/turboquant-redefining-ai-efficiency-with-extreme-compression/))
 - **Progressive disclosure** — only loads the relevant reference file (saves tokens)
+- **Chain validation** — error gates between intern handoffs prevent building on shaky research
 - **Escalation protocol** — knows what it should NOT do autonomously
 - **Tool integration** — dietmcp, skinnytools, divideandconquer
 - **Anti-slop filtering** — banned phrase list, confidence tags for claims
