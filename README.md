@@ -78,7 +78,7 @@ Platform-native content AND business strategy — product pages, pricing, revenu
 ## Installation
 
 ```bash
-git clone https://github.com/RuneweaverStudios/hotasianintern.git
+git clone https://github.com/austindixson/hotasianintern.git
 cp -r hotasianintern ~/.claude/skills/hotAsianIntern
 ```
 
@@ -139,9 +139,9 @@ The extra ~28% tokens buy you: tests, security escalation, production-correct pa
 
 | Tool | Install | What it adds |
 |---|---|---|
-| [dietmcp](https://github.com/RuneweaverStudios/dietmcp) | `pip install dietmcp` | Library docs via context7 |
-| [skinnytools](https://github.com/RuneweaverStudios/skinnytools) | `pip install skinnytools` | Compresses large output, prevents context death |
-| [divideandconquer](https://github.com/RuneweaverStudios/divideandconquer) | Clone to `~/.claude/skills/` | Parallel task decomposition |
+| [dietmcp](https://github.com/austindixson/dietmcp) | `pip install dietmcp` | Library docs via context7 |
+| [skinnytools](https://github.com/austindixson/skinnytools) | `pip install skinnytools` | Compresses large output, prevents context death |
+| [divideandconquer](https://github.com/austindixson/divideandconquer) | Clone to `~/.claude/skills/` | Parallel task decomposition |
 | [GitHub CLI](https://cli.github.com/) | `brew install gh` | PR creation, code search, CI monitoring |
 
 ---
@@ -168,4 +168,4 @@ PRs welcome. Bug reports: open an issue with the prompt that misbehaved and what
 
 ## License
 
-MIT. Built by [@RuneweaverStudios](https://github.com/RuneweaverStudios).
+MIT. Built by [@austindixson](https://github.com/austindixson).
